@@ -1,28 +1,28 @@
 <datacollection-group xmlns="http://xmlns.opennms.org/xsd/config/datacollection" name="Cisco Advanced">
 
    <resourceType name="cbQosCMStatsIndex" label="Cisco QoS" resourceLabel="${cbQosClassMapInterfaceAlias}/${cbQosClassMapPolicy}/${cbQosClassMapName} (index ${index})">
-      <persistenceSelectorStrategy class="org.opennms.netmgt.collectd.PersistAllSelectorStrategy"/>
-      <storageStrategy class="org.opennms.netmgt.dao.support.IndexStorageStrategy"/>
+      <persistenceSelectorStrategy class="org.opennms.netmgt.collection.support.PersistAllSelectorStrategy"/>
+      <storageStrategy class="org.opennms.netmgt.collection.support.IndexStorageStrategy"/>
    </resourceType>
 
    <resourceType name="sysTrafficMeterType" label="Cisco Switch Traffic Meter Type">
-      <persistenceSelectorStrategy class="org.opennms.netmgt.collectd.PersistAllSelectorStrategy"/>
-      <storageStrategy class="org.opennms.netmgt.dao.support.IndexStorageStrategy"/>
+      <persistenceSelectorStrategy class="org.opennms.netmgt.collection.support.PersistAllSelectorStrategy"/>
+      <storageStrategy class="org.opennms.netmgt.collection.support.IndexStorageStrategy"/>
    </resourceType>
 
    <resourceType name="cpmCPUTotalIndex" label="Cisco CPU" resourceLabel="${cpmCPUName} (index ${index})">
-      <persistenceSelectorStrategy class="org.opennms.netmgt.collectd.PersistAllSelectorStrategy"/>
-      <storageStrategy class="org.opennms.netmgt.dao.support.IndexStorageStrategy"/>
+      <persistenceSelectorStrategy class="org.opennms.netmgt.collection.support.PersistAllSelectorStrategy"/>
+      <storageStrategy class="org.opennms.netmgt.collection.support.IndexStorageStrategy"/>
    </resourceType>
 
    <resourceType name="ciscoNbarProtocolIndex" label="Cisco NBAR" resourceLabel="${cnpdStsPortAlias}/${cnpdStsProtocolName} (index ${index})">
-      <persistenceSelectorStrategy class="org.opennms.netmgt.collectd.PersistAllSelectorStrategy"/>
-      <storageStrategy class="org.opennms.netmgt.dao.support.IndexStorageStrategy"/>
+      <persistenceSelectorStrategy class="org.opennms.netmgt.collection.support.PersistAllSelectorStrategy"/>
+      <storageStrategy class="org.opennms.netmgt.collection.support.IndexStorageStrategy"/>
    </resourceType>
 
    <resourceType name="cAal5VccIndex" label="Cisco ATM AAL5" resourceLabel="${cAal5VccAlias} - ${cAal5VccIntf} (index ${index})">
-      <persistenceSelectorStrategy class="org.opennms.netmgt.collectd.PersistAllSelectorStrategy"/>
-      <storageStrategy class="org.opennms.netmgt.dao.support.IndexStorageStrategy"/>
+      <persistenceSelectorStrategy class="org.opennms.netmgt.collection.support.PersistAllSelectorStrategy"/>
+      <storageStrategy class="org.opennms.netmgt.collection.support.IndexStorageStrategy"/>
    </resourceType>
 
    <group name="cisco-cpu" ifType="all">

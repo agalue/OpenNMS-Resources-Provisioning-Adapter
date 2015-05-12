@@ -10,7 +10,7 @@
 	<bean id="eventForwarder" class="org.opennms.netmgt.provision.MockEventForwarder" />
 
 	<bean class="org.easymock.EasyMock" factory-method="createNiceMock" primary="true" id="eventSubscriptionService">
-		<constructor-arg value="org.opennms.netmgt.model.events.EventSubscriptionService" />
+		<constructor-arg value="org.opennms.netmgt.events.api.EventSubscriptionService" />
 	</bean>
 
 	<bean class="org.easymock.EasyMock" factory-method="createNiceMock" primary="true" id="resourceDao">

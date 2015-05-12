@@ -14,7 +14,7 @@
 		<property name="template" ref="transactionTemplate" />
 	</bean>
 
-	<bean id="resourcesProvisioningListenerAdapter" class="org.opennms.netmgt.model.events.AnnotationBasedEventListenerAdapter">
+	<bean id="resourcesProvisioningListenerAdapter" class="org.opennms.netmgt.events.api.AnnotationBasedEventListenerAdapter">
         <property name="annotatedListener" ref="resourcesProvisioningAdapter" />
         <property name="eventSubscriptionService" ref="eventSubscriptionService" />
     </bean>

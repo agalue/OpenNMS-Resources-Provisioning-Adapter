@@ -1,0 +1,26 @@
+<events>
+    <event>
+        <uei>uei.opennms.org/internal/provisioning/startResourceScan</uei>
+        <event-label>OpenNMS-defined provisioning event: startResourceScan</event-label>
+        <descr>Starting resource scan on node %nodelabel%</descr>
+        <logmsg dest='logndisplay'>Starting resource scan on node %nodelabel%</logmsg>
+        <severity>Minor</severity>
+    </event>
+    <event>
+        <uei>uei.opennms.org/internal/provisioning/resourceScanFinished</uei>
+        <event-label>OpenNMS-defined provisioning event: resourceScanFinished</event-label>
+        <descr>&lt;p&gt;The resource scan has finished successfuly on node %nodelabel%.&lt;br&gt;
+               New Resources: %parm[newResources]%&lt;br&gt;
+               Updated Resources: %parm[updatedResources]%&lt;br&gt;
+               Failed Resources: %parm[failedResources]%&lt;/p&gt;</descr>
+        <logmsg dest='logndisplay'>The resource scan has finished successfuly on node %nodelabel%</logmsg>
+        <severity>Normal</severity>
+    </event>
+    <event>
+        <uei>uei.opennms.org/internal/provisioning/resourceScanFailed</uei>
+        <event-label>OpenNMS-defined provisioning event: resourceScanFailed</event-label>
+        <descr>The resource scan has failed on node %nodelabel% because %parm[reason]%</descr>
+        <logmsg dest='logndisplay'>The resource scan has failed on node %nodelabel%</logmsg>
+        <severity>Warning</severity>
+    </event>
+</events>

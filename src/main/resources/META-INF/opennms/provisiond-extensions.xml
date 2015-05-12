@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/tx
+           http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<bean name="resourcesProvisioningAdapter" class="org.opennms.netmgt.provision.ResourcesProvisioningAdapter">
+		<property name="eventForwarder" ref="eventForwarder" />
+		<property name="resourceDao" ref="resourceDao" />
+		<property name="nodeDao" ref="nodeDao" />
+		<property name="template" ref="transactionTemplate" />
+	</bean>
+
+	<bean id="resourcesProvisioningListenerAdapter" class="org.opennms.netmgt.model.events.AnnotationBasedEventListenerAdapter">
+        <property name="annotatedListener" ref="resourcesProvisioningAdapter" />
+        <property name="eventSubscriptionService" ref="eventSubscriptionService" />
+    </bean>
+
+</beans>

@@ -1,0 +1,135 @@
+<datacollection-group xmlns="http://xmlns.opennms.org/xsd/config/datacollection" name="Cisco Advanced">
+
+   <resourceType name="cbQosCMStatsIndex" label="Cisco QoS" resourceLabel="${cbQosClassMapInterfaceAlias}/${cbQosClassMapPolicy}/${cbQosClassMapName} (index ${index})">
+      <persistenceSelectorStrategy class="org.opennms.netmgt.collectd.PersistAllSelectorStrategy"/>
+      <storageStrategy class="org.opennms.netmgt.dao.support.IndexStorageStrategy"/>
+   </resourceType>
+
+   <resourceType name="sysTrafficMeterType" label="Cisco Switch Traffic Meter Type">
+      <persistenceSelectorStrategy class="org.opennms.netmgt.collectd.PersistAllSelectorStrategy"/>
+      <storageStrategy class="org.opennms.netmgt.dao.support.IndexStorageStrategy"/>
+   </resourceType>
+
+   <resourceType name="cpmCPUTotalIndex" label="Cisco CPU" resourceLabel="${cpmCPUName} (index ${index})">
+      <persistenceSelectorStrategy class="org.opennms.netmgt.collectd.PersistAllSelectorStrategy"/>
+      <storageStrategy class="org.opennms.netmgt.dao.support.IndexStorageStrategy"/>
+   </resourceType>
+
+   <resourceType name="ciscoNbarProtocolIndex" label="Cisco NBAR" resourceLabel="${cnpdStsPortAlias}/${cnpdStsProtocolName} (index ${index})">
+      <persistenceSelectorStrategy class="org.opennms.netmgt.collectd.PersistAllSelectorStrategy"/>
+      <storageStrategy class="org.opennms.netmgt.dao.support.IndexStorageStrategy"/>
+   </resourceType>
+
+   <resourceType name="cAal5VccIndex" label="Cisco ATM AAL5" resourceLabel="${cAal5VccAlias} - ${cAal5VccIntf} (index ${index})">
+      <persistenceSelectorStrategy class="org.opennms.netmgt.collectd.PersistAllSelectorStrategy"/>
+      <storageStrategy class="org.opennms.netmgt.dao.support.IndexStorageStrategy"/>
+   </resourceType>
+
+   <group name="cisco-cpu" ifType="all">
+      <mibObj oid=".1.3.6.1.4.1.9.9.109.1.1.1.1.3" instance="cpmCPUTotalIndex" alias="cpmCPUTotal5sec"    type="gauge" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.109.1.1.1.1.4" instance="cpmCPUTotalIndex" alias="cpmCPUTotal1min"    type="gauge" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.109.1.1.1.1.5" instance="cpmCPUTotalIndex" alias="cpmCPUTotal5min"    type="gauge" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.109.1.1.1.1.6" instance="cpmCPUTotalIndex" alias="cpmCPUTotal5secRev" type="gauge" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.109.1.1.1.1.7" instance="cpmCPUTotalIndex" alias="cpmCPUTotal1minRev" type="gauge" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.109.1.1.1.1.8" instance="cpmCPUTotalIndex" alias="cpmCPUTotal5minRev" type="gauge" />
+   </group>
+
+   <group name="cisco-nbar" ifType="all">
+      <mibObj oid=".1.3.6.1.4.1.9.9.244.1.2.1.1.2"  instance="ciscoNbarProtocolIndex" alias="cnpdStsProtocolName" type="string" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.244.1.2.1.1.3"  instance="ciscoNbarProtocolIndex" alias="cnpdStsInPkts"       type="counter" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.244.1.2.1.1.4"  instance="ciscoNbarProtocolIndex" alias="cnpdStsOutPkts"      type="counter" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.244.1.2.1.1.5"  instance="ciscoNbarProtocolIndex" alias="cnpdStsInBytes"      type="counter" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.244.1.2.1.1.6"  instance="ciscoNbarProtocolIndex" alias="cnpdStsOutBytes"     type="counter" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.244.1.2.1.1.7"  instance="ciscoNbarProtocolIndex" alias="cnpdStsHCInPkts"     type="counter" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.244.1.2.1.1.8"  instance="ciscoNbarProtocolIndex" alias="cnpdStsHCOutPkts"    type="counter" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.244.1.2.1.1.9"  instance="ciscoNbarProtocolIndex" alias="cnpdStsHCInBytes"    type="counter" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.244.1.2.1.1.10" instance="ciscoNbarProtocolIndex" alias="cnpdStsHCOutBytes"   type="counter" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.244.1.2.1.1.11" instance="ciscoNbarProtocolIndex" alias="cnpdStsInBitRate"    type="gauge" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.244.1.2.1.1.12" instance="ciscoNbarProtocolIndex" alias="cnpdStsOutBitRate"   type="gauge" />
+   </group>
+
+   <group name="cisco-atm-aal5" ifType="all">
+      <mibObj oid=".1.3.6.1.4.1.9.9.66.1.1.1.1.1"  instance="cAal5VccIndex" alias="cAal5InPkts"        type="counter" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.66.1.1.1.1.2"  instance="cAal5VccIndex" alias="cAal5OutPkts"       type="counter" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.66.1.1.1.1.3"  instance="cAal5VccIndex" alias="cAal5InOctets"      type="counter" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.66.1.1.1.1.4"  instance="cAal5VccIndex" alias="cAal5OutOctets"     type="counter" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.66.1.1.1.1.5"  instance="cAal5VccIndex" alias="cAal5InDropPkts"    type="counter" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.66.1.1.1.1.6"  instance="cAal5VccIndex" alias="cAal5OutDropPkts"   type="counter" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.66.1.1.1.1.7"  instance="cAal5VccIndex" alias="cAal5InDropOctets"  type="counter" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.66.1.1.1.1.8"  instance="cAal5VccIndex" alias="cAal5OutDropOctets" type="counter" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.66.1.1.1.1.9"  instance="cAal5VccIndex" alias="cAal5HCInPkts"      type="counter" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.66.1.1.1.1.10" instance="cAal5VccIndex" alias="cAal5HCOutPkts"     type="counter" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.66.1.1.1.1.11" instance="cAal5VccIndex" alias="cAal5HCInOctets"    type="counter" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.66.1.1.1.1.12" instance="cAal5VccIndex" alias="cAal5HCOutOctets"   type="counter" />
+   </group>
+
+   <group name="cisco-qos-class-map-32" ifType="all">
+      <mibObj oid=".1.3.6.1.4.1.9.9.166.1.15.1.1.2"  instance="cbQosCMStatsIndex" alias="ccmPrePolicyPkt"     type="counter"/>
+      <mibObj oid=".1.3.6.1.4.1.9.9.166.1.15.1.1.5"  instance="cbQosCMStatsIndex" alias="ccmPrePolicyByte"    type="counter"/>
+      <mibObj oid=".1.3.6.1.4.1.9.9.166.1.15.1.1.9"  instance="cbQosCMStatsIndex" alias="ccmPostPolicyByte"   type="counter"/>
+      <mibObj oid=".1.3.6.1.4.1.9.9.166.1.15.1.1.13" instance="cbQosCMStatsIndex" alias="ccmDropPkt"          type="counter"/>
+      <mibObj oid=".1.3.6.1.4.1.9.9.166.1.15.1.1.16" instance="cbQosCMStatsIndex" alias="ccmDropByte"         type="counter"/>
+      <mibObj oid=".1.3.6.1.4.1.9.9.166.1.15.1.1.20" instance="cbQosCMStatsIndex" alias="ccmNoBufDropPkt"     type="counter"/>
+   </group>
+
+   <group name="cisco-qos-class-map-64" ifType="all">
+      <mibObj oid=".1.3.6.1.4.1.9.9.166.1.15.1.1.1"  instance="cbQosCMStatsIndex" alias="ccmPrePolicyPktOF"   type="counter"/>
+      <mibObj oid=".1.3.6.1.4.1.9.9.166.1.15.1.1.3"  instance="cbQosCMStatsIndex" alias="ccmPrePolicyPkt64"   type="counter"/>
+      <mibObj oid=".1.3.6.1.4.1.9.9.166.1.15.1.1.4"  instance="cbQosCMStatsIndex" alias="ccmPrePolicyByteOF"  type="counter"/>
+      <mibObj oid=".1.3.6.1.4.1.9.9.166.1.15.1.1.6"  instance="cbQosCMStatsIndex" alias="ccmPrePolicyByte64"  type="counter"/>
+      <mibObj oid=".1.3.6.1.4.1.9.9.166.1.15.1.1.7"  instance="cbQosCMStatsIndex" alias="ccmPrePolicyRate"    type="gauge"/>
+      <mibObj oid=".1.3.6.1.4.1.9.9.166.1.15.1.1.8"  instance="cbQosCMStatsIndex" alias="ccmPostPolicyByteOF" type="counter"/>
+      <mibObj oid=".1.3.6.1.4.1.9.9.166.1.15.1.1.10" instance="cbQosCMStatsIndex" alias="ccmPostPolicyByte64" type="counter"/>
+      <mibObj oid=".1.3.6.1.4.1.9.9.166.1.15.1.1.11" instance="cbQosCMStatsIndex" alias="ccmPostPolicyRate"   type="gauge"/>
+      <mibObj oid=".1.3.6.1.4.1.9.9.166.1.15.1.1.12" instance="cbQosCMStatsIndex" alias="ccmDropPktOF"        type="counter"/>
+      <mibObj oid=".1.3.6.1.4.1.9.9.166.1.15.1.1.14" instance="cbQosCMStatsIndex" alias="ccmDropPkt64"        type="counter"/>
+      <mibObj oid=".1.3.6.1.4.1.9.9.166.1.15.1.1.15" instance="cbQosCMStatsIndex" alias="ccmDropByteOF"       type="counter"/>
+      <mibObj oid=".1.3.6.1.4.1.9.9.166.1.15.1.1.17" instance="cbQosCMStatsIndex" alias="ccmDropByte64"       type="counter"/>
+      <mibObj oid=".1.3.6.1.4.1.9.9.166.1.15.1.1.18" instance="cbQosCMStatsIndex" alias="ccmDropRate"         type="gauge"/>
+      <mibObj oid=".1.3.6.1.4.1.9.9.166.1.15.1.1.19" instance="cbQosCMStatsIndex" alias="ccmNoBufDropPktOF"   type="counter"/>
+      <mibObj oid=".1.3.6.1.4.1.9.9.166.1.15.1.1.21" instance="cbQosCMStatsIndex" alias="ccmNoBufDropPkt64"   type="counter"/>
+   </group>
+
+   <group name="cisco-switch-l2stats" ifType="ignore">
+      <mibObj oid=".1.3.6.1.4.1.9.9.97.1.1.1.1.1"  instance="0" alias="cL2FwdLocalPkts"   type="counter" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.97.1.1.1.1.2"  instance="0" alias="cL2FwdLocalOctets" type="counter" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.97.1.1.1.1.3"  instance="0" alias="cL2FwdTotalPkts"   type="counter" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.97.1.1.1.1.4"  instance="0" alias="cL2NewAddrLearns"  type="counter" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.97.1.1.1.1.5"  instance="0" alias="cL2AddrLearnFails" type="counter" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.97.1.1.1.1.6"  instance="0" alias="cL2AddrLookupMiss" type="counter" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.97.1.1.1.1.7"  instance="0" alias="cL2IpPkts"         type="counter" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.97.1.1.1.1.8"  instance="0" alias="cL2IpxPkts"        type="counter" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.97.1.1.1.1.9"  instance="0" alias="cL2AssigProtoPkts" type="counter" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.97.1.1.1.1.10" instance="0" alias="cL2OtherProtoPkts" type="counter" />
+   </group>
+
+   <group name="cisco-switch-l3stats" ifType="ignore">
+      <mibObj oid=".1.3.6.1.4.1.9.9.97.1.4.1.1.1" instance="0" alias="cL3SwdTotalPkts"    type="counter" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.97.1.4.1.1.2" instance="0" alias="cL3SwdTotalOctets"  type="counter" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.97.1.4.1.1.3" instance="0" alias="cL3CandFlowHits"    type="counter" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.97.1.4.1.1.4" instance="0" alias="cL3EstabFlowHits"   type="counter" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.97.1.4.1.1.5" instance="0" alias="cL3ActiveFlows"     type="gauge" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.97.1.4.1.1.6" instance="0" alias="cL3FlowLearnFails"  type="counter" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.97.1.4.1.1.7" instance="0" alias="cL3IntFlowInvalids" type="counter" />
+      <mibObj oid=".1.3.6.1.4.1.9.9.97.1.4.1.1.8" instance="0" alias="cL3ExtFlowInvalids" type="counter" />
+   </group>
+
+   <systemDef name="Cisco Routers (Advanced)">
+      <sysoidMask>.1.3.6.1.4.1.9.1.</sysoidMask>
+      <collect>
+         <includeGroup>cisco-cpu</includeGroup>
+         <includeGroup>cisco-nbar</includeGroup>
+         <includeGroup>cisco-atm-aal5</includeGroup>
+         <includeGroup>cisco-qos-class-map-64</includeGroup>
+      </collect>
+   </systemDef>
+
+   <systemDef name="Cisco Catalyst 65xx">
+      <sysoid>.1.3.6.1.4.1.9.1.283</sysoid>
+      <collect>
+         <includeGroup>cisco-switch-l2stats</includeGroup>
+         <includeGroup>cisco-switch-l3stats</includeGroup>
+      </collect>
+   </systemDef>
+
+</datacollection-group>
